@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/lib/active_sort_order/version.rb')
+require File.expand_path(File.dirname(__FILE__) + '/lib/active_record_case_insensitive_finders/version.rb')
 
 require "bundler/gem_tasks"
 require "rake/testtask"
@@ -12,7 +12,7 @@ end
 task default: [:test]
 
 task :console do
-  require 'active_sort_order'
+  require 'active_record_case_insensitive_finders'
 
   require_relative 'test/dummy_app/app/models/application_record.rb'
   require_relative 'test/dummy_app/app/models/post.rb'

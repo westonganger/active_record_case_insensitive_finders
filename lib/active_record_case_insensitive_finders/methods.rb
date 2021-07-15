@@ -22,7 +22,7 @@ module ActiveRecordCaseInsensitiveFinders
     end
 
     def ci_find_by(hash)
-      return self.ci_where(hash).first
+      return self.ci_where_matches(hash).first
     end
 
     def ci_find_by!(hash)

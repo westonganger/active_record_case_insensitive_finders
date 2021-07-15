@@ -17,19 +17,21 @@ class ActiveRecordCaseInsensitiveFindersTest < ActiveSupport::TestCase
   end
 
   def test_ci_find_by
-    # TODO
+    # TODO test direct match queries
+
+    # TODO test like queries
   end
 
   def test_ci_find_by!
-    # TODO
+    # TODO test direct match queries
+
+    # TODO test like queries
   end
 
   def test_ci_where_matches
-    # TODO
-  end
+    # TODO test direct match queries
 
-  def test_ci_where_like
-    # TODO
+    # TODO test like queries
   end
 
   def test_ci_order
