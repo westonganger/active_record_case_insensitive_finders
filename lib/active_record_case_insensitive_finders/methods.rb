@@ -14,8 +14,8 @@ module ActiveRecordCaseInsensitiveFinders
     def ci_order(hash)
       this = self
 
-      hash.each do |col, val|
-        this = this.order(arel_table[col].matches(val))
+      hash.each do |col, sort_direction|
+        this = this.order(arel_table[col].lower(sort_direction))
       end
 
       return this
