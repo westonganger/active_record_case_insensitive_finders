@@ -16,26 +16,26 @@ gem 'active_record_case_insensitive_finders'
 
 ```ruby
 Post.ci_find_by(name: "str")
-### SAME AS Post.find_by("#{table_name}.name LIKE ?", "str")
+### SAME AS Post.find_by("#{table_name}.name ILIKE ?", "str")
 
 Post.ci_find_by!(name: "str")
-### SAME AS Post.find_by!("#{table_name}.name LIKE ?", "str")
+### SAME AS Post.find_by!("#{table_name}.name ILIKE ?", "str")
 
 Post.ci_order(name: :asc)
 ### SAME AS Post.order("lower(#{table_name}.name) ASC")
 
 Post.ci_where_matches(name: "str")
-### SAME AS Post.where("#{table_name}.name LIKE ?", "str")
+### SAME AS Post.where("#{table_name}.name ILIKE ?", "str")
 ```
 
-To make any searches use a partially matching ILIKE/LIKE query instead of direct match, simply add the appropriate SQL "%" symbols to your string
+To make any searches use a partially matching LIKE query instead of direct match, simply add the appropriate SQL "%" symbols to your string
 
 ```ruby
 Post.ci_find_by(name: "%str%")
-### SAME AS Post.find_by("lower(#{table_name}.name) LIKE ?", "%str%")
+### SAME AS Post.find_by("lower(#{table_name}.name) ILIKE ?", "%str%")
 
 Post.ci_where_matches(name: "%str%")
-### SAME AS Post.where("lower(#{table_name}.name) LIKE ?", "str")
+### SAME AS Post.where("lower(#{table_name}.name) ILIKE ?", "str")
 ```
 
 ## Credits
