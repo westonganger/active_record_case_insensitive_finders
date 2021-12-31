@@ -44,20 +44,10 @@ else
 end
 
 [Post].each do |klass|
-  if defined?(SQLite3)
+  if klass.connection.adapter_name.downcase.include?("sqlite")
     ActiveRecord::Base.connection.execute("DELETE FROM #{klass.table_name};")
     ActiveRecord::Base.connection.execute("UPDATE `sqlite_sequence` SET `seq` = 0 WHERE `name` = '#{klass.table_name}';")
   else
     ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{klass.table_name}")
   end
 end
-
-DATA = {}.with_indifferent_access
-
-DATA[:posts] = [
-  Post.find_or_create_by!(a: 1, b: 3),
-  Post.find_or_create_by!(a: 2, b: 2),
-  Post.find_or_create_by!(a: 3, b: 2),
-  Post.find_or_create_by!(a: 4, b: 1),
-  Post.find_or_create_by!(a: 5, b: 1),
-].shuffle

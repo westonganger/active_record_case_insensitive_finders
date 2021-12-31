@@ -19,4 +19,15 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
 
   s.add_runtime_dependency "activerecord", '>= 5'
+
+  s.add_development_dependency "rake"
+  s.add_development_dependency "minitest"
+  s.add_development_dependency 'minitest-reporters'
+  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'rails'
+  s.add_development_dependency 'appraisal'
+
+  if RUBY_VERSION.to_f >= 2.4
+    s.add_development_dependency 'warning'
+  end
 end

@@ -8,7 +8,12 @@ class SetUpTestTables < migration_klass
 
   def change
     create_table :posts do |t|
-      t.integer :a, :b
+      t.string :name
+    end
+
+    create_table :comments do |t|
+      t.references :post
+      t.string :content
     end
   end
 

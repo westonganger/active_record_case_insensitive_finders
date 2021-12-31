@@ -4,8 +4,14 @@ module ActiveRecordCaseInsensitiveFinders
     def ci_where_matches(hash)
       this = self
 
-      hash.each do |col, val|
-        this = this.where(arel_table[col].matches(val))
+      if !hash.is_a?(Hash)
+        raise ArgumentError.new("Invalid argument type")
+      end
+
+      where_strings = ActiveRecordCaseInsensitiveFinders.get_where_strings_from_hash(hash, arel_table: arel_table)
+
+      where_strings.each do |sql_str|
+        this = this.where(sql_str)
       end
 
       return this
@@ -14,8 +20,14 @@ module ActiveRecordCaseInsensitiveFinders
     def ci_order(hash)
       this = self
 
-      hash.each do |col, sort_direction|
-        this = this.order(arel_table[col].lower(sort_direction))
+      if !hash.is_a?(Hash)
+        raise ArgumentError.new("Invalid argument type")
+      end
+
+      order_strings = ActiveRecordCaseInsensitiveFinders.get_order_strings_from_hash(hash, arel_table: arel_table)
+
+      order_strings.each do |sql_str|
+        this = this.order(sql_str)
       end
 
       return this

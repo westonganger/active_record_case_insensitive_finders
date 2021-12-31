@@ -13,7 +13,12 @@
 ActiveRecord::Schema.define(version: 2020_10_01_061824) do
 
   create_table "posts", force: :cascade do |t|
-    t.integer :a, :b
+    t.string :name
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer :post_id, index: true
+    t.string :content
   end
 
 end
