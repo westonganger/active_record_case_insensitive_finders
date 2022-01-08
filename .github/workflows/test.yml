@@ -138,7 +138,7 @@ jobs:
           - ruby: 2.6
             gemfile: gemfiles/rails_6.1.pg.gemfile
           - ruby: "3.0"
-            gemfile: gemfiles/rails_7.1.pg.gemfile
+            gemfile: gemfiles/rails_7.0.pg.gemfile
 
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
